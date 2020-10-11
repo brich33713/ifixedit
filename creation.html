@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div id="creation-selector">
+    <button>Add Category</button>
+    <button>Add Subcategory</button>
+    <button>Add Trade</button>
+    <button>Add Issue</button>
+    <button>Add Part</button>
+    <button>Add Issue Part</button>    
+</div>
+
+<div id="AddCategory" style="display: none">
+    <form action="/add-category" method="POST">
+        <div id="container">
+            <label for="category">Category:</label>
+            <input type="text" name="category">    
+            <button id="add-category">Add Additional category</button> 
+        </div>
+        <button type="submit" id="submit-category">Submit</button>
+    </form>
+</div>
+
+<div id="AddPart" style="display: none">
+    <form action="/add-part" method="POST">
+        <div id="container">
+            <label for="part">Part:   </label>
+            <input type="text" name="part" id="part">    
+            <button id="add-part">Add Additional part</button> 
+        </div>
+        <button type="submit" id="submit-part">Submit</button>
+    </form>
+    <div id="link-holder">
+
+    </div>
+</div>
+
+<div id="AddIssuePart" style="display: none">
+    <form action="/add-issuepart" method="POST">
+        <div id="container">
+            <div>
+                <label for="part">Part:</label>
+                <select name="part" id="">
+                {% for part in parts %}
+                <option value="{{part.name}}">{{part.name}}</option>
+                {% endfor %}
+                </select>
+            <!-- </div>
+            <div> -->
+                <label for="issue">Issue:</label>
+                <select name="issue" id="">
+                {% for issue in issues %}
+                <option value="{{issue.name}}">{{issue.name}}</option>
+                {% endfor %}
+                </select>
+            </div>    
+            <button id="add-issuepart">Add Additional part</button> 
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div id="AddSubcategory" style="display: none">
+<form action="/add-subcategory" method="POST">
+    <label for="category">Category:</label>
+    <select name="category" id="">
+    {% for category in categories %}
+    <option value="{{category.name}}">{{category.name}}</option>
+    {% endfor %}
+    </select>
+    <div id="container">
+    <div>
+        <label for="subcategory">Subcategory:</label>
+        <input type="text" name="subcategory">
+        <button id="add-subcategory">Add</button>
+    </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+</div>
+
+<div id="AddTrade" style="display: none">
+    <form action="/add-trade" method="POST">
+        <label for="category">Category:</label>
+        <select name="category" id="trade-category">
+        {% for category in categories %}
+        <option value="{{category.name}}">{{category.name}}</option>
+        {% endfor %}
+        </select>
+        <div id="container">
+            <h3>Trade 1</h3>    
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="trade-name">
+            </div>
+            <div>
+                <label for="cost">Cost per hour:</label>
+                <input type="text" name="cost" id="trade-cost">    
+            </div>
+            <button id="add-trade">Add Additional Trade</button> 
+        </div>
+        <button type="submit" id="submit-trade">Submit</button>
+    </form>
+</div>
+
+<div id="AddIssue" style="display: none">
+    <form action="/add-issue" method="POST">
+        <label for="subcategory">Subategory:</label>
+        <select name="category" id="issue-subcategory">
+        {% for subcategory in subcategories %}
+        <option value="{{subcategory.name}}">{{subcategory.name}}</option>
+        {% endfor %}
+        </select>
+        <div id="container">
+            <h3>Issue 1</h3>    
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="issue-name">
+            </div>
+            <div>
+                <label for="video">Video URL:</label>
+                <input type="text" name="video" id=video>    
+            </div>
+            <div>
+                <label for="hours">Number of Hours To Complete:</label>
+                <input type="text" name="hours" id="hours">    
+            </div>
+            <div>
+                <label for="difficulty">Difficulty:</label>
+                <select name="difficulty" id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option> 
+                </select>  
+            </div>
+            <button id="add-issue">Add Additional Issue</button> 
+        </div>
+        <button type="submit" id="submit-issue">Submit</button>
+    </form>
+</div>
+
+<button id="back" style="display: none">Back</button>
+{% endblock %}
+{% block scripts %}
+<script src="/static/repair.js"></script>
+<script src="/static/submission.js"></script>
+{% endblock %}
