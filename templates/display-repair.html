@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block jumbotron %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  {% if vowel %}
+  <h1 class="text-center">How to fix an {{issue.name}}</h1>
+  {% else %}
+  <h1 class="text-center">How to fix a {{issue.name}}</h1>
+  {% endif %}
+
+  <div class="text-center">
+    <p>Difficulty: {{issue.difficulty}}</p>
+    <p>Hours to Complete: {{issue.num_hours}}</p>
+    <p>What you now call yourself: {{issue.subcategory.category.trade[0].name}}</p>
+    <p>Labor Cost Per Hour: ${{issue.subcategory.category.trade[0].cost_per_hour}}</p>
+    
+  </div>
+
+  <div class="text-center mb-4">
+    <iframe width="600" height="600" 
+    src={{issue.video_url}} 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen></iframe>
+  </div>
+
+  <h2 class="text-center mb-4"><u>Parts Needed</u></h2>
+  <div class="container align-center">
+    <div class="row">
+      {% for issue in issue.issue_parts %}
+      <div class="col-2">
+        <div class="card">
+          <img src={{issue.part.image_url}} class="card-img-top" alt="{{issue.part.name}}">
+          <div class="card-body">
+            <h5 class="card-title">{{issue.part.name}}</h5>
+            <p class="card-text"><strong>Price:</strong>${{issue.part.price}}</p>
+            <a href={{issue.part.link}} class="btn btn-primary" target="_blank">Purchase</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

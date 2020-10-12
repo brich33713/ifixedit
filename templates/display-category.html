@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center">{{category.name}}</h1>
+
+    {% for subcategory in subcategories %}
+    <a href="/subcategory/{{subcategory.name}}"><h4>{{subcategory.name}}</h4></a>
+    {% endfor %}
+</div>
+
+{% endblock %}

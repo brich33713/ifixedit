@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1>Search Results For: {{issue}}</h1>
+</div>
+{% if results != 'Search returned no results' %}
+<div class="container">
+    <ol>
+        {% for result in results %}
+            {% if result.name[0] in vowels %}
+            <li><strong><u>How to fix an {{result.name}}</u></strong></li>
+            
+            <p class="mb-0">Category: {{result.subcategory.category.name}}/{{result.subcategory.name}}</p>
+            <a href="fix/{{result.name.replace(' ','-')}}">www.ifixedit/fix/{{result.name.replace(' ','-')}}</a>
+            
+            {% else %}
+            <li><strong><u>How to fix a {{result.name}}</u></strong></li>
+            
+            <p class="mb-0">Category: {{result.subcategory.category.name}}/{{result.subcategory.name}}</p>
+            <a class="mt-0" href="fix/{{result.name.replace(' ','-')}}">www.ifixedit/fix/{{result.name.replace(' ','-')}}</a>
+            
+            {% endif %}
+        {% endfor %}
+    </ol>
+{% else %}
+<div class="container">
+<p>{{results}}</p>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <h1 class="text-center">{{subcategory.name}}</h1>
+
+    {% for issue in issues %}
+    <a href="/fix/{{issue.name.replace(' ','-')}}"><h4>{{issue.name}}</h4></a>
+    {% endfor %}
+</div>
+
+{% endblock %}
