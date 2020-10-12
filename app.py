@@ -52,6 +52,11 @@ def display_repair_page(issue):
         vowel = False
     return render_template("display-repair.html",issue=Issue.query.filter(Issue.name == issue).first(),vowel=vowel)
 
+@app.route("/categories")
+def display_all_categories():
+    categories = Category.query.all()
+    return render_template("display-all-categories.html",categories=categories)
+
 @app.route("/category/<category>")
 def display_category(category):
     category = category.capitalize()
@@ -121,7 +126,7 @@ def add_issuepart_by_form():
         existing_repair_parts = [(part.issue_id, part.part_id)
                              for part in Issue_Parts.query.all()]
         if (issue.id, part.id) not in existing_repair_parts:
-            new_repair_part = Issue_Parts(issue_id=issue.id,part_id=part.id)
+            new_repair_part = Issue_Parts(issue_id=issue.id,part_id=part.id,num_needed=results["number"])
             db.session.add(new_repair_part)
             db.session.commit()
             flash(f"{part.name} added to {issue.name}")
@@ -273,10 +278,10 @@ def add_trade_by_category(category, trade_name, cost):
     return redirect("/")
 
 
-@app.route("/quick-add-repair-part/<int:issue_id>/<int:part_id>")
-def add_repair_part(issue_id, part_id):
+@app.route("/quick-add-repair-part/<int:issue_id>/<int:part_id>/<int:number>")
+def add_repair_part(issue_id, part_id,number):
     if "Admin" in session:
-        new_repair_part = Issue_Parts(issue_id=issue_id, part_id=part_id)
+        new_repair_part = Issue_Parts(issue_id=issue_id, part_id=part_id,num_needed=number)
         issue = Issue.query.get(issue_id)
         part = Part.query.get(part_id)
         existing_repair_parts = [(part.issue_id, part.part_id)
