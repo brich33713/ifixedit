@@ -9,8 +9,10 @@
     
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">IFixedIt</a>
+  {% block nav %}
+  <div class="bg-img banner-text">
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand banner-text" href="/">IFixedIt</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle banner-text" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Category
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -31,38 +33,44 @@
           <form class="form-inline my-2 my-lg-0" action="/search">
             <label for="fix" class="mr-3">What do you want to fix? </label>
             <input class="form-control mr-sm-2" type="search" placeholder="Ex: running toilet" aria-label="Search" name="fix">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="fix">Search</button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="fix">Search</button>
           </form>
         </div>
     </nav>
-
-    {% block jumbotron %}
-    <div class="jumbotron"></div>
-    {% endblock %}
+    </div>
+  </div>
 
     {% for msg in get_flashed_messages() %}
     <div id="flash-messages">{{msg}}</div>
     {% endfor %}
     
+    <div class="alert alert-secondary block">
+      {% for msg in get_flashed_messages() %}
+    <div id="flash-messages">{{msg}}</div>
+    {% endfor %}
+    </div>
+
+    {% endblock %}
 
     {% block content %} 
+
     <div class="container text-center">
-        <h1>3 Simple Steps</h1>
+        <h1>3 Easy Steps</h1>
     </div>
 
     <div class="container">
         <div class="row">
-            <div class="col-4">
-                <h3 class="text-center">Step 1:</h3>
-                <img src="/static/images/magnifying-glass.jpg" alt="" class="img-thumbnail">
-                <h3 class="text-center">Search</h3>
+            <div class="col-4 zoom">
+                <!-- <h3 class="text-center">Step 1:</h3> -->
+                <img src="/static/images/step1.png" alt="" class="img-thumbnail">
+                <!-- <h3 class="text-center">Search</h3> -->
             </div>
-            <div class="col-4">
+            <div class="col-4 zoom">
                 <h3 class="text-center">Step 2:</h3>
                 <img src="/static/images/video.jpg" alt="" class="img-thumbnail">
                 <h3 class="text-center">Watch the Video</h3>
             </div>
-            <div class="col-4">
+            <div class="col-4 zoom">
                 <h3 class="text-center">Step 3:</h3>
                 <img src="/static/images/repair.png" alt="" class="img-thumbnail">
                 <h3 class="text-center">Buy Parts and Follow Along</h3>
