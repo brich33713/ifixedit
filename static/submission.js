@@ -128,7 +128,7 @@ $('body').on('click', async function(e) {
 });
 
 //When section for adding new instance is selected
-$('#creation-selector').on('click', function(e) {
+$('#creation-selector > button').on('click', function(e) {
 	$('#creation-selector').toggle('hidden');
 	$(`#${e.target.innerText.replaceAll(' ', '')}`).show();
 	$('#back').toggle('hidden');
