@@ -3,3 +3,33 @@
 	background-size: cover;
 	height: 400px;
 }
+
+.img-thumbnail {
+	height: 290px;
+	width: 290px;
+}
+
+.bg-img {
+	background-image: url("/static/images/ifixedit.png");
+	min-height: 456px;
+	position: relative;
+	object-fit: cover;
+}
+
+.zoom {
+	padding: 50px;
+	transition: transform .2s; /* Animation */
+	margin: 0 auto;
+}
+
+.zoom:hover {
+	transform: scale(1.1); /* (110% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.banner-text {
+	color: white;
+}
+
+body {
+	background-color: #f8f9fa;
+}
