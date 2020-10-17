@@ -45,16 +45,16 @@
                 <option value="{{part.name}}">{{part.name}}</option>
                 {% endfor %}
                 </select>
-            <!-- </div>
-            <div> -->
                 <label for="issue">Issue:</label>
                 <select name="issue" id="">
                 {% for issue in issues %}
                 <option value="{{issue.name}}">{{issue.name}}</option>
                 {% endfor %}
                 </select>
+                <label for="number">Number Needed: </label>
+                <input type="text" name="number" id="">
             </div>    
-            <button id="add-issuepart">Add Additional part</button> 
+            <button id="add-issuepart" style="display: none;">Add Additional part</button> 
         </div>
         <button type="submit">Submit</button>
     </form>
