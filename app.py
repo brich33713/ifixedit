@@ -3,11 +3,12 @@ from models import db, connect_db, Category, Subcategory, Admin, Trade, Issue, I
 from flask_debugtoolbar import DebugToolbarExtension
 from forms import Admin_Login_Form
 from flask_bcrypt import Bcrypt
+import os
 
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "repair_project"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///repair_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABSE_URL','postgresql:///repair_db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 # debug = DebugToolbarExtension(app)
@@ -21,7 +22,7 @@ def homepage():
 
 @app.route("/search",methods=["GET"])
 def search():
-    issue = request.args["fix"].capitalize()
+    issue = request.args["fix"].title()
     issues = [issue.name for issue in Issue.query.all()]
     if issue in issues:
         issue = issue.replace(" ","-")
