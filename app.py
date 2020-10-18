@@ -8,7 +8,7 @@ import os
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "repair_project"
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABSE_URL','postgresql:///repair_db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','postgresql:///repair_db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 # debug = DebugToolbarExtension(app)
