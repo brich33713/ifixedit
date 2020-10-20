@@ -64,6 +64,7 @@ class Issue_Parts(db.Model):
                          primary_key=True, nullable=False)
     part_id = db.Column(db.ForeignKey('parts.id'),
                         primary_key=True, nullable=False)
+    num_needed = db.Column(db.Integer)
 
     """access Issue table to get issue info 
     (name, category, video_url, num_hours, difficulty"""
