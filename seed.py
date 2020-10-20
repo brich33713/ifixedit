@@ -16,7 +16,7 @@ trade = Trade(category_id=category.id, name="Plumber", cost_per_hour=12)
 trade1 = Trade(category_id=category1.id, name="Mechanic", cost_per_hour=24)
 part = Part(name="Hammer", link="https://www.walmart.com/ip/Hyper-Tough-16-Ounce-Claw-Hammer-with-Fiberglass-Handle/972830002", 
 image_url="https://i5.walmartimages.com/asr/61b5ab99-2d90-45fe-9952-0932abf84c05_1.e755cf112171a90e30833bd8429a2bad.jpeg?odnWidth=100&odnHeight=100&odnBg=ffffff", price=14)
-part1 = Part(name="Wrench", link="google.com", image_url="google.com", price=4)
+part1 = Part(name="Wrench", link="https://www.walmart.com/ip/8-inch-Adjustable-Wrench-with-Sure-Grip-Handle-UW00015A/17190620", image_url="https://i5.walmartimages.com/asr/959de1ff-d6a9-4876-9256-2b01e2756462_2.9cdc010d9e8ddfc3c1ca7e7a72f7fcb7.jpeg?odnWidth=100&odnHeight=100&odnBg=ffffff", price=4)
 db.session.add_all([subcategory, subcategory1, trade, trade1, part, part1])
 db.session.commit()
 
@@ -25,8 +25,8 @@ issue = Issue(name="Running Toilet", subcategory_id=subcategory.id,
 db.session.add(issue)
 db.session.commit()
 
-issue_part = Issue_Parts(issue_id=issue.id, part_id=part.id)
-issue_part1 = Issue_Parts(issue_id=issue.id, part_id=part1.id)
+issue_part = Issue_Parts(issue_id=issue.id, part_id=part.id, num_needed=2)
+issue_part1 = Issue_Parts(issue_id=issue.id, part_id=part1.id, num_needed=2)
 db.session.add_all([issue_part, issue_part1])
 db.session.commit()
 
