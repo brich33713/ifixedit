@@ -36,9 +36,15 @@ User Flows:
 
 Tech Stack:
 
+
 Python - flask, flask_bcrypt, wtforms, flask_wtf (requirements.txt file included)
+
 Javascript
+
 HTML
+
 CSS
+
 Heroku
+
 Postgres
