@@ -6,7 +6,8 @@ API Link: http://api-doc.axesso.de/
 
 Upcoming Features:
 
-Alphabetized categories
-Full parts catalog
-Tags to improve search functionality
-Edit and delete functionality for admins
+Alphabetized categories,
+Full parts catalog,
+Tags to improve search functionality,
+Edit and delete functionality for admins,
+Top 100 most common diy repairs
