@@ -7,11 +7,14 @@ db.create_all()
 
 category = Category(name="Plumbing")
 category1 = Category(name="Auto")
-db.session.add_all([category, category1])
+category2 = Category(name="Appliances")
+category3 = Category(name="Electrical")
+category4 = Category(name="Carpentry")
+db.session.add_all([category, category1,category2,category3,category4])
 db.session.commit()
 
 subcategory = Subcategory(category_id=category.id, name="Toilets")
-subcategory1 = Subcategory(category_id=category.id, name="Engines")
+subcategory1 = Subcategory(category_id=category1.id, name="Engines")
 trade = Trade(category_id=category.id, name="Plumber", cost_per_hour=12)
 trade1 = Trade(category_id=category1.id, name="Mechanic", cost_per_hour=24)
 part = Part(name="Hammer", link="https://www.walmart.com/ip/Hyper-Tough-16-Ounce-Claw-Hammer-with-Fiberglass-Handle/972830002", 
